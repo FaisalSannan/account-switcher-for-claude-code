@@ -1,6 +1,21 @@
 # Account Switcher for Claude Code (unofficial)
 
+[![VS Marketplace](https://img.shields.io/visual-studio-marketplace/v/faisalsannan.account-switcher-for-claude-code?label=VS%20Marketplace&color=2b2a33)](https://marketplace.visualstudio.com/items?itemName=faisalsannan.account-switcher-for-claude-code)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/faisalsannan.account-switcher-for-claude-code?color=d97757)](https://marketplace.visualstudio.com/items?itemName=faisalsannan.account-switcher-for-claude-code)
+[![Open VSX](https://img.shields.io/open-vsx/v/faisalsannan/account-switcher-for-claude-code?label=Open%20VSX&color=2b2a33)](https://open-vsx.org/extension/faisalsannan/account-switcher-for-claude-code)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 **Switch between multiple official Claude Code accounts in VS Code / code-server — without logging out of any of them.**
+
+## Install
+
+- **VS Code:** search "Account Switcher for Claude Code" in the Extensions panel, or install from the
+  [Marketplace](https://marketplace.visualstudio.com/items?itemName=faisalsannan.account-switcher-for-claude-code).
+- **code-server / VSCodium:** install from
+  [Open VSX](https://open-vsx.org/extension/faisalsannan/account-switcher-for-claude-code).
+- **Manual:** download the `.vsix` from
+  [Releases](https://github.com/FaisalSannan/account-switcher-for-claude-code/releases)
+  and use *Extensions: Install from VSIX…*.
 
 Each account's local state (`~/.claude/` and
 `~/.claude.json`) is snapshotted into a named profile; switching swaps the
