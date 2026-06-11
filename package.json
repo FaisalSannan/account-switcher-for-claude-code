@@ -1,20 +1,30 @@
 {
-  "name": "claude-official-profile-switcher",
-  "displayName": "Claude Official Profile Switcher",
+  "name": "account-switcher-for-claude-code",
+  "displayName": "Account Switcher for Claude Code",
   "description": "Unofficial: safely switch between multiple official Claude Code for VS Code accounts by snapshotting ~/.claude and ~/.claude.json into named profiles, with timestamped backups, validation and automatic rollback.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "local",
   "license": "MIT",
   "author": "Faisal Sannan",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FaisalSannan/claude-official-profile-switcher.git"
+    "url": "https://github.com/FaisalSannan/account-switcher-for-claude-code.git"
   },
   "bugs": {
-    "url": "https://github.com/FaisalSannan/claude-official-profile-switcher/issues"
+    "url": "https://github.com/FaisalSannan/account-switcher-for-claude-code/issues"
   },
   "engines": { "vscode": "^1.92.0" },
   "categories": ["Other"],
+  "keywords": [
+    "claude",
+    "claude code",
+    "account switcher",
+    "profile switcher",
+    "multi-account",
+    "switch accounts",
+    "anthropic",
+    "code-server"
+  ],
   "activationEvents": ["onStartupFinished"],
   "main": "./out/extension.js",
   "contributes": {
@@ -30,7 +40,7 @@
       { "command": "claudeProfileSwitcher.deleteProfile", "title": "Claude Profile Switcher: Delete Profile" }
     ],
     "configuration": {
-      "title": "Claude Official Profile Switcher",
+      "title": "Account Switcher for Claude Code",
       "properties": {
         "claudeProfileSwitcher.profilesRoot": {
           "type": "string",

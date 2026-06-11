@@ -1,4 +1,4 @@
-# Claude Official Profile Switcher (unofficial)
+# Account Switcher for Claude Code (unofficial)
 
 Switch between multiple **official Claude Code for VS Code** accounts without
 logging out of any of them. Each account's local state (`~/.claude/` and
@@ -171,10 +171,10 @@ a hard crash mid-swap; they are safe to delete after restoring a backup.
 ```bash
 npm install
 npm test          # compiles + runs the core test suite in a temp sandbox
-npm run package   # produces claude-official-profile-switcher-<version>.vsix
+npm run package   # produces account-switcher-for-claude-code-<version>.vsix
 ```
 
-Install with: `code-server --install-extension claude-official-profile-switcher-<version>.vsix`
+Install with: `code-server --install-extension account-switcher-for-claude-code-<version>.vsix`
 (or VS Code: *Extensions: Install from VSIX…*).
 
 ## Notes & limitations
