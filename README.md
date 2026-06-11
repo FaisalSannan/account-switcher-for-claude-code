@@ -49,6 +49,70 @@ A switch does, in order:
    `~/.claude/.credentials.json` → `600`.
 6. **Reload** the window so the official Claude extension rereads the state.
 
+## Full usage guide
+
+### Knowing which account you're on
+
+After installing and reloading, look at the **bottom-left status bar** of
+VS Code / code-server. You'll see the active profile at all times:
+
+```
+👤 Claude: Main
+```
+
+- `Claude: <name>` — this account's state is currently live.
+- `Claude: no profile` — no profile imported yet (see first-time setup below).
+
+You can also run **Claude Profile Switcher: Show Status** from the Command
+Palette (`Ctrl+Shift+P`) for the full picture: active profile, all profiles,
+backup count and the exact paths in use.
+
+### Switching accounts (day-to-day)
+
+1. **Click `Claude: <name>` in the bottom-left status bar**
+   (or `Ctrl+Shift+P` → *Claude Profile Switcher: Switch Official Claude Account*).
+2. Pick the account you want from the menu. The currently active one is
+   marked `● active now`.
+3. Confirm the dialog. The extension saves your current account's state,
+   takes a backup, swaps the files, and **reloads the window automatically**.
+4. After the reload the Claude panel is on the other account — the status
+   bar now shows its name.
+
+> **Important: start a New Chat after switching.**
+> Conversations belong to the account that created them. If a chat tab from
+> the previous account is still open and you type into it, you'll get
+> `No conversation found with session ID: …`. That's not a bug — it means
+> sessions are correctly isolated per account. Click the **＋ (New Chat)**
+> button in the Claude panel instead. Your old conversations come back
+> whenever you switch to the profile they belong to.
+
+### First-time setup (registering your accounts)
+
+1. While logged in with account 1: `Ctrl+Shift+P` →
+   **Import Current Claude Account** → name it (e.g. `Main`).
+   The status bar now shows `Claude: Main`.
+2. **Create Empty Profile** → name it (e.g. `Work`).
+3. **Switch** to `Work` (status bar → pick `Work`). The window reloads and
+   the Claude panel shows a login screen — account 1 is safely stored in its
+   profile, not logged out.
+4. Log in to the Claude panel with account 2.
+5. Run **Save Current State to Active Profile** once, so the login is
+   captured into `Work`.
+6. Done. From now on switching is a single click on the status bar, and both
+   accounts stay logged in permanently. Repeat steps 2–5 for any third
+   account.
+
+### Rules of thumb
+
+- **After every switch → New Chat** (don't reuse a stale conversation tab).
+- **Let running Claude tasks finish before switching**, so the snapshot
+  isn't taken mid-write.
+- **After logging in or changing Claude settings**, run
+  *Save Current State to Active Profile* so the profile snapshot is current
+  (switching also saves automatically — this is only for extra safety).
+- **Something broke?** Run *Restore Last Backup*. Every switch keeps a
+  timestamped backup automatically.
+
 ## Commands (Command Palette)
 
 | Command | What it does |
@@ -65,19 +129,6 @@ A switch does, in order:
 
 The status bar shows the active profile (e.g. `Claude: Main`); clicking it
 opens the switch menu.
-
-## First-time setup for two accounts
-
-1. While logged in with account 1: **Import Current Claude Account** → name it `Main`.
-2. **Create Empty Profile** → name it `Work`.
-3. **Switch Official Claude Account** → `Work`. The window reloads with no
-   Claude login (account 1 stays saved in its profile).
-4. Log in to the Claude panel with account 2.
-5. **Save Current State to Active Profile** (saves account 2 into `Work`).
-6. From now on, switch freely between `Main` and `Work`. Both stay logged in.
-
-Tip: before switching, let any running Claude task finish — the official
-extension may write to `~/.claude` while it works.
 
 ## Recovery instructions
 
