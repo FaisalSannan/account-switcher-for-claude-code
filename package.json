@@ -1,0 +1,88 @@
+{
+  "name": "claude-official-profile-switcher",
+  "displayName": "Claude Official Profile Switcher",
+  "description": "Unofficial: safely switch between multiple official Claude Code for VS Code accounts by snapshotting ~/.claude and ~/.claude.json into named profiles, with timestamped backups, validation and automatic rollback.",
+  "version": "0.3.0",
+  "publisher": "local",
+  "license": "MIT",
+  "author": "Faisal Sannan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FaisalSannan/claude-official-profile-switcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FaisalSannan/claude-official-profile-switcher/issues"
+  },
+  "engines": { "vscode": "^1.92.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "claudeProfileSwitcher.importCurrent", "title": "Claude Profile Switcher: Import Current Claude Account" },
+      { "command": "claudeProfileSwitcher.createEmpty", "title": "Claude Profile Switcher: Create Empty Profile" },
+      { "command": "claudeProfileSwitcher.switchProfile", "title": "Claude Profile Switcher: Switch Official Claude Account" },
+      { "command": "claudeProfileSwitcher.syncActive", "title": "Claude Profile Switcher: Save Current State to Active Profile" },
+      { "command": "claudeProfileSwitcher.backupNow", "title": "Claude Profile Switcher: Backup Current Claude State" },
+      { "command": "claudeProfileSwitcher.restoreLastBackup", "title": "Claude Profile Switcher: Restore Last Backup" },
+      { "command": "claudeProfileSwitcher.showStatus", "title": "Claude Profile Switcher: Show Status" },
+      { "command": "claudeProfileSwitcher.openProfilesFolder", "title": "Claude Profile Switcher: Open Profiles Folder" },
+      { "command": "claudeProfileSwitcher.deleteProfile", "title": "Claude Profile Switcher: Delete Profile" }
+    ],
+    "configuration": {
+      "title": "Claude Official Profile Switcher",
+      "properties": {
+        "claudeProfileSwitcher.profilesRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Folder for saved Claude profiles. Empty means ~/.claude-profiles."
+        },
+        "claudeProfileSwitcher.activeClaudeDir": {
+          "type": "string",
+          "default": "",
+          "description": "Active Claude config dir. Empty means ~/.claude."
+        },
+        "claudeProfileSwitcher.activeClaudeJson": {
+          "type": "string",
+          "default": "",
+          "description": "Active Claude JSON file. Empty means ~/.claude.json."
+        },
+        "claudeProfileSwitcher.reloadAfterSwitch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Reload the VS Code/code-server window automatically after a profile switch so the official Claude extension rereads the active profile."
+        },
+        "claudeProfileSwitcher.maxBackups": {
+          "type": "number",
+          "default": 25,
+          "minimum": 0,
+          "description": "Maximum number of timestamped backups to keep in <profilesRoot>/_backups (oldest pruned first). 0 disables pruning."
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        { "command": "claudeProfileSwitcher.importCurrent" },
+        { "command": "claudeProfileSwitcher.createEmpty" },
+        { "command": "claudeProfileSwitcher.switchProfile" },
+        { "command": "claudeProfileSwitcher.syncActive" },
+        { "command": "claudeProfileSwitcher.backupNow" },
+        { "command": "claudeProfileSwitcher.restoreLastBackup" },
+        { "command": "claudeProfileSwitcher.showStatus" },
+        { "command": "claudeProfileSwitcher.openProfilesFolder" },
+        { "command": "claudeProfileSwitcher.deleteProfile" }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "test": "npm run compile && node test/core.test.js",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.92.0",
+    "typescript": "^5.5.4",
+    "@vscode/vsce": "^3.2.1"
+  }
+}
