@@ -1,7 +1,8 @@
 # Account Switcher for Claude Code (unofficial)
 
-Switch between multiple **official Claude Code for VS Code** accounts without
-logging out of any of them. Each account's local state (`~/.claude/` and
+**Switch between multiple official Claude Code accounts in VS Code / code-server — without logging out of any of them.**
+
+Each account's local state (`~/.claude/` and
 `~/.claude.json`) is snapshotted into a named profile; switching swaps the
 live state atomically and reloads the window.
 
@@ -176,6 +177,13 @@ npm run package   # produces account-switcher-for-claude-code-<version>.vsix
 
 Install with: `code-server --install-extension account-switcher-for-claude-code-<version>.vsix`
 (or VS Code: *Extensions: Install from VSIX…*).
+
+## Support this project
+
+This tool is free and open source. If it saves you time, you can
+[**sponsor me on GitHub**](https://github.com/sponsors/FaisalSannan) — it
+keeps the extension maintained as Claude Code evolves. Stars on the repo
+help others find it too. ⭐
 
 ## Notes & limitations
 
