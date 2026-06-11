@@ -181,9 +181,10 @@ Install with: `code-server --install-extension account-switcher-for-claude-code-
 ## Support this project
 
 This tool is free and open source. If it saves you time, you can
-[**sponsor me on GitHub**](https://github.com/sponsors/FaisalSannan) — it
-keeps the extension maintained as Claude Code evolves. Stars on the repo
-help others find it too. ⭐
+[**sponsor me on GitHub**](https://github.com/sponsors/FaisalSannan) or
+[**buy me a coffee**](https://buymeacoffee.com/fsannan) — it keeps the
+extension maintained as Claude Code evolves. Stars on the repo help others
+find it too. ⭐
 
 ## Notes & limitations
 
