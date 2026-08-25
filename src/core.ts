@@ -550,8 +550,23 @@ export interface HelperScripts {
   wrapper: string;
 }
 
+// Characters that would break out of the double-quoted shell strings the
+// profiles root is embedded into below (e.g. `local root="__PROFILES_ROOT__"`).
+// A profilesRoot containing one of these could inject arbitrary shell
+// commands into the generated, later-sourced/exec'd scripts.
+const SHELL_UNSAFE_PATH_CHARS = /["'`$\\\n\r]/;
+
+function assertShellSafePath(p: string, settingName: string): void {
+  if (SHELL_UNSAFE_PATH_CHARS.test(p)) {
+    throw new Error(
+      `claudeProfileSwitcher.${settingName} contains characters ("'` + '`$\\' +
+      `' or a newline) that are not safe to embed in a shell script: '${p}'`);
+  }
+}
+
 export function renderHelperScripts(paths: Paths, version: string): HelperScripts {
   const root = path.resolve(paths.profilesRoot);
+  assertShellSafePath(root, 'profilesRoot');
   const fill = (t: string) => t.split('__PROFILES_ROOT__').join(root).split('__VERSION__').join(version);
   return { profileEnv: fill(PROFILE_ENV_TEMPLATE), wrapper: fill(WRAPPER_TEMPLATE) };
 }
