@@ -52,17 +52,20 @@
         "claudeProfileSwitcher.profilesRoot": {
           "type": "string",
           "default": "",
-          "description": "Folder holding the per-account profile directories. Empty means ~/.claude-profiles."
+          "scope": "machine",
+          "description": "Folder holding the per-account profile directories. Empty means ~/.claude-profiles. User/machine setting only — cannot be set by a workspace, since its value is embedded in generated shell scripts."
         },
         "claudeProfileSwitcher.activeClaudeDir": {
           "type": "string",
           "default": "",
-          "description": "Default account's Claude config dir. Empty means ~/.claude."
+          "scope": "machine",
+          "description": "Default account's Claude config dir. Empty means ~/.claude. User/machine setting only — not overridable per workspace."
         },
         "claudeProfileSwitcher.activeClaudeJson": {
           "type": "string",
           "default": "",
-          "description": "Default account's Claude root JSON. Empty means ~/.claude.json."
+          "scope": "machine",
+          "description": "Default account's Claude root JSON. Empty means ~/.claude.json. User/machine setting only — not overridable per workspace."
         },
         "claudeProfileSwitcher.maxBackups": {
           "type": "number",

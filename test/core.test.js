@@ -385,6 +385,20 @@ test('helper scripts: rendered, wrapper executable, second materialize is a no-o
   assert.deepStrictEqual(after, before, 'mtimes unchanged on second call');
 });
 
+test('renderHelperScripts rejects a profilesRoot that could inject shell code', async () => {
+  const base = paths();
+  for (const bad of [
+    path.join(base.profilesRoot, '..', 'x"; touch /tmp/pwned; echo "'),
+    path.join(base.profilesRoot, '..', 'x`touch /tmp/pwned`'),
+    path.join(base.profilesRoot, '..', 'x$(touch /tmp/pwned)')
+  ]) {
+    assert.throws(() => core.renderHelperScripts({ ...base, profilesRoot: bad }, '9.9.9-test'),
+      /not safe to embed in a shell script/, `expected rejection for: ${bad}`);
+  }
+  // a normal path is unaffected
+  assert.doesNotThrow(() => core.renderHelperScripts(base, '9.9.9-test'));
+});
+
 test('bash: profile-env.sh routes new processes per folder/env', async () => {
   const p = paths();
   const home = path.join(sandbox, 'home');
